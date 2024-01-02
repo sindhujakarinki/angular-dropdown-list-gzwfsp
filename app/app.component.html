@@ -1,0 +1,71 @@
+<div class="body">
+  <div class="container">
+    <div class="rule-container">
+      <h3>Rule:</h3>
+      <h3 style="color: 0f0e3e; margin-left: 10px;">Do_Compare</h3>
+    </div>
+
+    <div class="section">
+      <div class="button-box">
+        <span>for </span>
+      </div>
+      <textarea [(ngModel)]="schedule.keepForText" autosize></textarea>
+      <div class="button-box">
+        <span [(ngModel)]="schedule.branch">do</span>
+      </div>
+      <div class="then">
+        <select [(ngModel)]="schedule.selectedOption">
+          <option value="" disabled>Select</option>
+          <option *ngFor="let item of dataList" [value]="item.name">
+            {{ item.name }}
+          </option>
+        </select>
+        <!-- <div *ngIf="schedule.selectedOption === 'Approve'">
+          Sample Text for Approve
+        </div> -->
+      </div>
+    </div>
+    <div *ngIf="schedule.selectedOption === 'Approve'" class="section2">
+      <div class="button-box">
+        <span>If</span>
+      </div>
+      <div class="textarea">
+        <textarea [(ngModel)]="schedule.keepForText2" autosize></textarea>
+        <mat-form-field [style.fontSize]="fontSize.value">
+          <mat-label>Autosize textarea</mat-label>
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="1"
+            cdkAutosizeMaxRows="5"
+          ></textarea>
+        </mat-form-field>
+      </div>
+      <div class="button-box">
+        <span>then</span>
+      </div>
+      <div class="then">
+        <select [(ngModel)]="schedule.branch">
+          <option value="" disabled>Select</option>
+          <option *ngFor="let item of dataList" [value]="item.code">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div *ngIf="schedule.selectedOption === 'Approve'" class="section">
+      <div class="button-box">
+        <span [(ngModel)]="schedule.branch">else</span>
+      </div>
+      <div class="then2">
+        <select>
+          <option value="" disabled>Select</option>
+          <option *ngFor="let item of dataList" [value]="item.code">
+            {{ item.name }}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
